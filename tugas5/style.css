@@ -1,0 +1,89 @@
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container grid */
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "nav nav nav"
+        "left main right"
+        "footer footer footer";
+    grid-template-columns: 1fr 2fr 1fr; /* Proporsi sesuai gambar */
+    grid-template-rows: auto auto 1fr auto;
+    width: 80%;
+    max-width: 1000px;
+    gap: 12px;
+}
+
+/* Gaya elemen grid */
+header, nav, .left, main, .right, footer {
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Membuat teks berada di tengah */
+}
+
+/* Warna masing-masing bagian */
+header {
+    background: #0077b6;
+    grid-area: header;
+}
+
+nav {
+    background: #00b4d8;
+    grid-area: nav;
+}
+
+.left {
+    background: #90e0ef;
+    grid-area: left;
+    color: black;
+}
+
+main {
+    background: #0077b6;
+    grid-area: main;
+}
+
+.right {
+    background: #90e0ef;
+    grid-area: right;
+    color: black;
+}
+
+footer {
+    background: #03045e;
+    grid-area: footer;
+}
+
+/* Menyesuaikan tinggi */
+header, nav, footer {
+    height: 60px;
+}
+
+.left, .right {
+    height: 300px;
+}
+
+main {
+    height: 300px;
+}
