@@ -1,0 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav .navbar-brand img {
+    height: 50px;
+}
+
+footer img {
+    margin: 0 5px;
+}
