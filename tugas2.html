@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai</title>
+    <style>
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 30px 30px;
+            font-size: 18px;
+            text-align: center;
+        }
+        th, td {
+            padding: 10px;
+            border: 2px solid skyblue;
+        }
+        th {
+            background-color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Pegawai</th>
+                <th>Umur</th>
+                <th>Jabatan</th>
+                <th>Status</th>
+                <th>Gaji Pokok</th>
+                <th>Tunjangan Jabatan</th>
+                <th>BPJS</th>
+                <th>Tunjangan Keluarga</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                let pegawai = "Dodi Prayodi";
+                let umur = 25;
+                let jabatan = "Manajer";
+                let status = "Menikah";
+                
+                let gajiPokok;
+                if (jabatan === "Manajer") {
+                    gajiPokok = 15000000;
+                } else if (jabatan === "Asisten Manajer") {
+                    gajiPokok = 10000000;
+                } else {
+                    gajiPokok = 5000000;
+                }
+                
+                let tunjanganJabatan = 0.15 * gajiPokok;
+                let bpjs = 0.10 * gajiPokok;
+                let tunjanganKeluarga = (status === "Menikah") ? 0.20 * gajiPokok : 0;
+                let totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+                
+                document.write(`<tr>
+                    <td>${pegawai}</td>
+                    <td>${umur}</td>
+                    <td>${jabatan}</td>
+                    <td>${status}</td>
+                    <td>Rp ${gajiPokok.toLocaleString()}</td>
+                    <td>Rp ${tunjanganJabatan.toLocaleString()}</td>
+                    <td>Rp ${bpjs.toLocaleString()}</td>
+                    <td>Rp ${tunjanganKeluarga.toLocaleString()}</td>
+                </tr>`);
+            </script>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total Gaji</th>
+                <th colspan="7" style="text-align: center;"><script>document.write(`Rp ${totalGaji.toLocaleString()}`);</script></th>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
