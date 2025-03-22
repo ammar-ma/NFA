@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Pesanan</title>
+</head>
+<body>
+
+    <script>
+            class Kendaraan {
+            constructor(nama, jenis) {
+                this.nama = nama;
+                this.jenis = jenis;
+                this.disewa = false;
+            }
+
+            sewa() {
+                if (!this.disewa) {
+                    this.disewa = true;
+                    return true;
+                }
+                return false;
+            }
+
+            kembalikan() {
+                this.disewa = false;
+            }
+        }
+
+        class Pelanggan {
+            constructor(nama, nomorTelepon) {
+                this.nama = nama;
+                this.nomorTelepon = nomorTelepon;
+                this.kendaraanDisewa = null;
+            }
+
+            sewaKendaraan(kendaraan) {
+                if (kendaraan.sewa()) {
+                    this.kendaraanDisewa = kendaraan;
+                    console.log(`${this.nama} telah menyewa ${kendaraan.nama}.`);
+                } else {
+                    console.log(`${kendaraan.nama} sudah disewa oleh pelanggan lain.`);
+                }
+            }
+
+            kembalikanKendaraan() {
+                if (this.kendaraanDisewa) {
+                    console.log(`${this.nama} mengembalikan ${this.kendaraanDisewa.nama}.`);
+                    this.kendaraanDisewa.kembalikan();
+                    this.kendaraanDisewa = null;
+                } else {
+                    console.log(`${this.nama} tidak memiliki kendaraan untuk dikembalikan.`);
+                }
+            }
+        }
+
+        class SistemManajemenTransportasi {
+            constructor() {
+                this.pelangganList = [];
+            }
+
+            tambahPelanggan(pelanggan) {
+                this.pelangganList.push(pelanggan);
+            }
+
+            tampilkanPelanggan() {
+                console.log("Daftar Pelanggan yang Menyewa Kendaraan:");
+                this.pelangganList.forEach((pelanggan, index) => {
+                    if (pelanggan.kendaraanDisewa) {
+                        console.log(`${index + 1}. ${pelanggan.nama} (${pelanggan.nomorTelepon}) - ${pelanggan.kendaraanDisewa.nama}`);
+                    }
+                });
+            }
+        }
+
+        // Contoh penggunaan
+        const kendaraan1 = new Kendaraan("Toyota Avanza", "Mobil");
+        const kendaraan2 = new Kendaraan("Yamaha NMAX", "Motor");
+
+        const pelanggan1 = new Pelanggan("Ahmad", "08123456789");
+        const pelanggan2 = new Pelanggan("Budi", "08987654321");
+
+        const sistemTransportasi = new SistemManajemenTransportasi();
+
+        sistemTransportasi.tambahPelanggan(pelanggan1);
+        sistemTransportasi.tambahPelanggan(pelanggan2);
+
+        pelanggan1.sewaKendaraan(kendaraan1);
+        pelanggan2.sewaKendaraan(kendaraan2);
+
+        sistemTransportasi.tampilkanPelanggan();
+
+    </script>
+</body>
+</html>
