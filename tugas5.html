@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Pesanan</title>
+</head>
+<body>
+
+    <script>
+
+                // **Data Produk**
+        let produkList = [
+            { id: 1, nama: "Laptop", harga: 12000000 },
+            { id: 2, nama: "Smartphone", harga: 5000000 },
+            { id: 3, nama: "Tablet", harga: 7000000 },
+            { id: 4, nama: "Smartwatch", harga: 2000000 },
+            { id: 5, nama: "Headphone", harga: 1000000 }
+        ];
+
+        const eventHandler = {
+            tambahProduk: function (id, nama, harga) {
+                produkList = [...produkList, { id, nama, harga }];
+                console.log(`Produk ${nama} berhasil ditambahkan.`);
+            },
+            
+            hapusProduk: function (id) {
+                produkList = produkList.filter(produk => produk.id !== id);
+                console.log(`Produk dengan ID ${id} berhasil dihapus.`);
+            },
+            
+            tampilkanProduk: function () {
+                console.log("Daftar Produk:");
+                produkList.forEach(({ id, nama, harga }) => {
+                    console.log(`ID: ${id}, Nama: ${nama}, Harga: ${harga}`);
+                });
+            }
+        };
+
+        // Menjalankan fungsi
+
+        eventHandler.tampilkanProduk();
+        eventHandler.tambahProduk(6, "Keyboard", 800000);
+        eventHandler.tampilkanProduk();
+        eventHandler.hapusProduk(2);
+        eventHandler.tampilkanProduk();
+
+    </script>
+</body>
+</html>
